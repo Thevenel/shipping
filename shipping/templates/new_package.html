@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="text-center">New Package Page</h1>
+        <form method="POST" action="" class="needs-validation">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend class="border-bottom mb-4">Package Info</legend>
+                <div class="row">
+                      <div class="col-md-6 mb-3">
+                        {{ form.description.label(class='form-control-label') }}
+                        {% if form.description.errors %}
+                        {{ form.description(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.description.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.description(class="form-control") }}
+                        {% endif %} 
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        {{ form.weight.label(class='form-control-label') }}
+                        {% if form.weight.errors %}
+                        {{ form.weight(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.weight.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.weight(class="form-control") }}
+                        {% endif %} 
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        {{ form.dimension.label(class='form-control-label') }}
+                        {% if form.dimension.errors %}
+                        {{ form.dimension(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.dimension.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.dimension(class="form-control") }}
+                        {% endif %} 
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        {{ form.value.label(class='form-control-label') }}
+                        {% if form.value.errors %}
+                        {{ form.value(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.value.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.value(class="form-control") }}
+                        {% endif %} 
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        {{ form.price.label(class='form-control-label') }}
+                        {% if form.price.errors %}
+                        {{ form.price(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.price.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.price(class="form-control") }}
+                        {% endif %} 
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        {{ form.via.label(class='form-control-label') }}
+                        {% if form.via.errors %}
+                        {{ form.via(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.via.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.via(class="form-control") }}
+                        {% endif %} 
+                    </div>
+                    
+                </div>
+              
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class='btn btn-outline-info') }}
+              </div>
+        </form>
+
+
+
+    {% endblock content %}
+    

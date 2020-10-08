@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% for receiver in receivers %}
+  <p><a href="{{ url_for('receivers.creceiver', client_id = client_id, receiver_id = receiver_id) }}">{{ receiver.fname }} {{ receiver.lname }}</a> </p>  
+{% endfor %}
+
+    <a class="btn btn-outline-info" href="{{ url_for('packages.new_package', client_id = client_id, receiver_id=receiver_id) }}">New Package</a>
+{% endblock content %}

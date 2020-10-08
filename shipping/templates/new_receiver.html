@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1 class="text-center"> Receiver Page</h1>
+          <form action="" method="POST">
+              {{ form.hidden_tag() }}
+              <fieldset>
+                  <legend class="border-bottom">Receiver Info</legend>
+                  <div class="form-group">
+                    <div class="col-md-6 mb-3">
+                        {{ form.fname.label(class="form-control-label") }}
+                        {% if form.fname.errors %}
+                        {{ form.fname(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.fname.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.fname(class="form-control") }}
+                        {% endif %} 
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form.lname.label(class="form-control-label") }}
+                        {% if form.lname.errors %}
+                        {{ form.lname(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.lname.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.lname(class="form-control") }}
+                        {% endif %} 
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form.phoneNumber.label(class="form-control-label") }}
+                        {% if form.phoneNumber.errors %}
+                        {{ form.phoneNumber(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                          {% for error in form.phoneNumber.errors %}
+                            <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.phoneNumber(class="form-control") }}
+                        {% endif %} 
+                    </div>
+                  </div>
+              </fieldset>
+              <div class="form-group">
+                {{ form.submit(class='btn btn-outline-info') }}
+              </div>
+          </form>
+
+  {% endblock content %}
+        

@@ -1,0 +1,37 @@
+body { font: 2em Lato, sans-serif }
+nav a { 
+    font-size: .7em }
+
+.report-header img {
+    width: 200px;
+}
+
+#clock {
+    font-size: medium;
+    float: right;
+    position: relative;
+    top: 25px;
+    left: 150px;
+}
+
+#date{
+    font-size: medium;
+    float: right;
+    position: relative;
+}
+.address {
+    font-size: small;
+}
+@page { 
+    size: 4in 6in landscape; 
+    margin: 2cm; 
+    }
+ 
+ @media print {
+    
+@page { 
+    size: 4in 6in landscape;
+    margin: 2cm; 
+    } 
+    nav { display: none }
+}

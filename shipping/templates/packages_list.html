@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<a class="btn btn-outline-info" href="{{ url_for('packages.package') }}">View Package</a>
+<a class="btn btn-outline-info" href="#">New Package</a>
+<a class="btn btn-outline-info" href="{{ url_for('receivers.view_receiver', client_id = client_id) }}">Receiver</a>
+
+
+<h1 class="text-center"> List of Packages</h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Sender</th>
+        <th scope="col">Receiver</th>
+        <th scope="col">Description</th>
+        <th scope="col">Via</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Value</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+       {% for p in packages %}
+        <th scope="row">PA-{{ p.id }}</th>
+        <td> <a class="nav-link p-0" href="#">{{ p.client.fname }} {{ p.client.lname }}</a> </td>
+        <td>{{ p.receiver.fname }} {{ p.receiver.lname }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.via}}</td>
+        <td>{{ p.weight }} LBS</td>
+        <td>USD ${{ p.value }}</td>
+        <td>USD ${{ p.price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  
+{% endblock content %}

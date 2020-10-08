@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row text-center">
+            <div class="btn-light btn-lg col">
+                <a href="{{ url_for('packages.package') }}"> 
+                    <img class="rounded" src="{{ url_for('static', filename='images/package.png') }}" style="width: 200px;" alt="package-icon"> <br>
+                    <h4 class="btn btn-lg" >Packages</h4>
+                </a>
+            </div>
+
+            <div class="btn-light btn-lg col">
+                <a href="{{ url_for('clients.all_clients') }}"> 
+                    <img class="rounded" src="{{ url_for('static', filename='images/people.png') }}" style="width: 200px;" alt="users-icon"> <br>
+                    <h4 class="btn btn-lg" >Clients</h4>
+                </a>
+            </div>  
+            
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% for client in clients %}
+  <p><a href="{{ url_for('clients.client', client_id = client.id) }}">{{ client.fname }} {{ client.lname }}</a> </p>  
+{% endfor %}
+
+    <a class="btn btn-outline-info" href="{{ url_for('clients.new_client') }}">New Client</a>
+{% endblock content %}

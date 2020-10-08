@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='report_one.css') }}">
+    
+    <script src="https://kit.fontawesome.com/ace3c5b255.js" crossorigin="anonymous"></script>
+    <title>Report</title>
+</head>
+<body>
+  <div class="container">
+    <nav class="text-right mt-5 mr-5" >
+      <a class="btn btn-outline-info" href="{{ url_for('report.report_one_pdf', package_id = package_id) }}">Print</a>
+  </nav>
+      <div class="report-header">
+          <img src="{{url_for('static', filename='/images/logo.png')}}" alt="Logo">
+          <p class="address">3125 John P Curci Drive, Pembroke Park, 33009 <br>
+              +1 954-391-7149 <br>
+              WhatsApp : +1 786-872-5023 <br>
+              Rue 17-18 D Cap-Haïtien <br>
+              +509 3487-2929
+              </p>
+              <div id="date" class="text-right mr-4"></div>
+              <div id="clock" class="text-right mr-4"></div> 
+      </div>
+  
+      <hr>
+      <div class="person-info lead row">
+          <small class="col-md-6 mb3"><strong>From:</strong> {{package.client.fname.upper() }} {{package.client.lname.upper() }}   <br>
+              {% autoescape off %}
+                  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {% endautoescape %}
+               {{package.client.phone_number }} 
+              </small>
+         
+          <small class="col-md-6 mb3"><strong>To:</strong> {{package.receiver.fname.upper() }} {{package.receiver.lname.upper() }}   <br>
+              {% autoescape off %}
+                  &nbsp; &nbsp;&nbsp;&nbsp;
+              {% endautoescape %}
+               {{package.receiver.phone_number }} 
+              </small>
+      </div>
+  <br>
+          <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Package ID</th>
+              <th scope="col">Description</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Dimension</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr class="lead">
+             
+              <th scope="row">PA-{{ package.id }}</th>
+              <td>{{ package.description }}</td>
+              <td>{{ package.weight }} LBS</td>
+              <td>{{ package.dimension}}</td>
+              <td>USD ${{ package.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p class="lead text-right">Operator: {{ current_user.username.title() }}</p>
+      <br>
+  </div>
+  
+ 
+    
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ url_for('static', filename = '/js/code.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

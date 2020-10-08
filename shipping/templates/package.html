@@ -1,0 +1,51 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h4 class="text-center pt-0 mt-0"> List of Packages</h4>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Receiver</th>
+            <th scope="col">Description</th>
+            <th scope="col">Via</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Invoice</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+           {% for p in packages.items %}
+            <th scope="row">PA-{{ p.id }}</th>
+            <td> <a class="nav-link p-0" href="{{ url_for('clients.client', client_id = p.client.id) }}">{{ p.client.fname }} {{ p.client.lname }}</a> </td>
+            <td>{{ p.receiver.fname }} {{ p.receiver.lname }}</td>
+            <td>{{ p.description }}</td>
+            <td>{{ p.via }}</td>
+            <td>{{ p.weight }} LBS</td>
+            <td>{{ p.date.strftime("%d-%m-%Y") }}</td>
+            <td>USD ${{ p.price }}</td>
+            <td><a href="{{ url_for('report.report_one', package_id = p.id) }}">View</a></td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% for page_num in packages.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2 ) %}
+        {% if page_num %}
+        {% if packages.page == page_num %}
+        <a class="btn btn-info" href="{{ url_for('packages.package', page = page_num) }}">{{ page_num }}</a>
+        {% else %}
+        <a class="btn btn-outline-info" href="{{ url_for('packages.package', page = page_num) }}">{{ page_num }}</a>
+
+        {% endif %}
+        {% else %}
+          ...
+        {% endif %}
+      {% endfor %}
+
+{% endblock content %}

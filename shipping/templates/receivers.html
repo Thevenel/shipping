@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+
+
+  <h1 class="text-center"> List of Receivers</h1>
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            {% for receiver in receivers %}
+          <td>{{ receiver.fname }}</td>
+          <td>{{ receiver.lname }}</td>
+          <td>{{ receiver.phone_number }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a class="btn btn-outline-info" href="{{ url_for('clients.new_client') }}">New Client</a>
+{% endblock content %}

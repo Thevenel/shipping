@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="login text-center">
+    <form action="" method="POST" class="form-signin">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="h3 mb-3 font-weight-normal">Welcome!</legend>
+                <div class="form-group">
+                    <!-- {{ form.username.label(class="form-control-label") }} -->
+                    
+                    {% if form.username.errors %}
+                    {{ form.username(class='form-control-label is-invalid') }}    
+                       
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.username(class="form-control form-control", placeholder="Username") }}
+                        
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <!-- {{ form.password.label(class="form-control-label") }} -->
+                    {% if form.password.errors %}
+                    {{ form.password(class='form-control is-invalid') }}    
+                        
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.password(class="form-control form-control", placeholder="Password") }}
+                         
+                    {% endif %}
+                </div>
+                
+        </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-lg btn-secondary btn-block") }}
+                <div class="text=muted">
+                    <small>
+                        Need an account ? <a href="{{ url_for('users.register') }}">Get One now</a>
+                    </small>
+                </div>
+            </div>
+            <p class="mt-5 mb-3 text-muted">&copy; Jay Soft 2020</p>
+    </form>
+
+</section>
+    
+   {% endblock content %}
